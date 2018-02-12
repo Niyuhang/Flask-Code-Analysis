@@ -1,0 +1,5 @@
+flask
+是一个实用的WEB框架，本身并没有什么东西，
+它其实就是对 sqlachemy 数据库操作，jinja HTML展示, werkzeug进行了封装
+见 ex_2
+
