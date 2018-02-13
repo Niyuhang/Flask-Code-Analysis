@@ -7,7 +7,15 @@ flask
 就执行了app(),也就是Flask中定义的__call__方法
 而__call__方法封装了wsgi_app方法
 
+而wsgi_app方法，内部首先创建了一个请求的上下文环境，在里面传入了WSGI的一些环境变量，并且将请求上下文推入
+再进入request_context内部，它会根据给定的环境变量去创建一个请求上下文的类，并且和现有的环境进行绑定
 
+接着就会进入 full_dispatch_request, 进行请求的分发
+而在内部，会首先去寻找有没有要在请求前完成的函数，回去判断是否已经 got_first_request 如果是True就会直接返回
+而如果并没有，那就会去执行里面的functions， 然后设置为false
 
+而执行完了这部分函数之后
+就会去执行 request_started.send(self)
 
+request_started 继承自signal模块，是一个flask内置的核心信号，
 

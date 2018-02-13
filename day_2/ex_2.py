@@ -16,12 +16,14 @@ app.run()
 
 #================ 华丽的分割线=====================================================
 
+# Flask
+# 这是一个真正的WSGI应用
+
 
 def wsgi_app(self, environ, start_response):
     """The actual WSGI application.  This is not implemented in
     `__call__` so that middlewares can be applied without losing a
     reference to the class.  So instead of doing this::
-
         app = MyMiddleware(app)
 
     It's a better idea to do this instead::
@@ -42,6 +44,7 @@ def wsgi_app(self, environ, start_response):
                            a list of headers and an optional
                            exception context to start the response
     """
+    # 请求上下文环境
     ctx = self.request_context(environ)
     ctx.push()
     error = None
