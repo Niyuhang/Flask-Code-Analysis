@@ -2,4 +2,12 @@ flask
 是一个实用的WEB框架，本身并没有什么东西，
 它其实就是对 sqlachemy 数据库操作，jinja HTML展示, werkzeug进行了封装
 见 ex_2
+当app.run()以后，就会去调用run()方法，然后make_simple_server建立起一个服务
+而在浏览器请求的时候,就会去调用execute（app）方法
+就执行了app(),也就是Flask中定义的__call__方法
+而__call__方法封装了wsgi_app方法
+
+
+
+
 
